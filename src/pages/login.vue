@@ -1,7 +1,7 @@
 <script setup>
 import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 import logo from '@images/logo.svg?raw'
-import axios from '@axios'
+import axios from 'axios'
 
 const form = ref({
   email: '',
@@ -11,7 +11,7 @@ const form = ref({
 
 const isPasswordVisible = ref(false)
 
-const login = async () => {
+const loginUser = async () => {
   try {
     // Make a POST request to your login API endpoint
     const response = await axios.post('http://localhost:3300/login', {
@@ -24,11 +24,12 @@ const login = async () => {
     console.log('Login successful:', response.data)
 
     // Redirect to the home page or any other route upon successful login
-    $router.push('/dashboard')
+    $router.push('/')
   } catch (error) {
     // Handle login error
     console.error('Login failed:', error)
 
+    // You can show an error message to the user if needed
   }
 }
 </script>
@@ -64,7 +65,7 @@ const login = async () => {
       </VCardText>
 
       <VCardText>
-        <VForm @submit.prevent="$router.push('/')">
+        <VForm @submit.prevent="loginUser">
           <VRow>
             <!-- email -->
             <VCol cols="12">
@@ -107,7 +108,8 @@ const login = async () => {
               <VBtn
                 block
                 type="submit"
-              >aq
+              >
+                aq
                 Login
               </VBtn>
             </VCol>
