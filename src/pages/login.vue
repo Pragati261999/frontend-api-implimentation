@@ -1,7 +1,7 @@
 <script setup>
-import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
-import logo from '@images/logo.svg?raw'
 import axios from 'axios'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const form = ref({
   email: '',
@@ -10,26 +10,34 @@ const form = ref({
 })
 
 const isPasswordVisible = ref(false)
+const isLoading = ref(false)
+const errorMessage = ref('')
+
+const router = useRouter()
 
 const loginUser = async () => {
   try {
-    // Make a POST request to your login API endpoint
-    const response = await axios.post('http://localhost:3300/login', {
-      email: form.email,
-      password: form.password,
-      remember: form.remember,
+    isLoading.value = true
+
+    // Make a request to the login API
+    const response = await axios.post(`http://localhost:3300/login`, {
+      email: form.value.email,
+      password: form.value.password,
     })
 
-    // Handle the response as needed
-    console.log('Login successful:', response.data)
-
-    // Redirect to the home page or any other route upon successful login
-    $router.push('/')
+    // Check if the login was successful
+    if (response.status === 200) {
+      // Redirect to the desired page after successful login
+      router.push('/dashboard')
+    } else {
+      // Handle other status codes or display a generic error message
+      errorMessage.value = 'Login failed. Please check your credentials.'
+    }
   } catch (error) {
-    // Handle login error
-    console.error('Login failed:', error)
-
-    // You can show an error message to the user if needed
+    // Handle network or server errors
+    errorMessage.value = 'An error occurred. Please try again later.'
+  } finally {
+    isLoading.value = false
   }
 }
 </script>
@@ -105,13 +113,17 @@ const loginUser = async () => {
               </div>
 
               <!-- login button -->
-              <VBtn
-                block
-                type="submit"
-              >
-                aq
-                Login
-              </VBtn>
+               <VBtn
+      block
+      type="submit"
+      :loading="isLoading"
+    >
+      {{ isLoading ? 'Logging in...' : 'Login' }}
+    </VBtn>
+     <!-- Show error message -->
+    <div v-if="errorMessage" class="text-h6 mt-2 text-danger">
+      {{ errorMessage }}
+    </div>
             </VCol>
           </VRow>
         </VForm>

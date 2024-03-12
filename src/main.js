@@ -9,22 +9,27 @@ import '@layouts/styles/index.scss'
 import '@styles/styles.scss'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
-import axios from '@axios'
+import axios from 'axios' // Update import statement
 
 loadFonts()
 
-
-// Create vue app
+// Create Vue app
 const app = createApp(App)
 
-app.config.globalProperties.$axios = axios
-
-
+// Configure Axios globally
+app.config.globalProperties.$axios = axios.create({
+  baseURL: 'http://localhost:3300', // Replace with your API's base URL
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'http://localhost:5173', // Replace with your frontend's origin
+  },
+})
 
 // Use plugins
 app.use(vuetify)
 app.use(createPinia())
 app.use(router)
 
-// Mount vue app
+// Mount Vue app
 app.mount('#app')
