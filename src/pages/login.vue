@@ -24,12 +24,11 @@ const login = async () => {
     console.log('Login successful:', response.data)
 
     // Redirect to the home page or any other route upon successful login
-    $router.push('/')
+    $router.push('/dashboard')
   } catch (error) {
     // Handle login error
     console.error('Login failed:', error)
 
-    // You can show an error message to the user if needed
   }
 }
 </script>
@@ -108,40 +107,9 @@ const login = async () => {
               <VBtn
                 block
                 type="submit"
-              >
+              >aq
                 Login
               </VBtn>
-            </VCol>
-
-            <!-- create account -->
-            <VCol
-              cols="12"
-              class="text-center text-base"
-            >
-              <span>New on our platform?</span>
-              <RouterLink
-                class="text-primary ms-2"
-                to="/register"
-              >
-                Create an account
-              </RouterLink>
-            </VCol>
-
-            <VCol
-              cols="12"
-              class="d-flex align-center"
-            >
-              <VDivider />
-              <span class="mx-4">or</span>
-              <VDivider />
-            </VCol>
-
-            <!-- auth providers -->
-            <VCol
-              cols="12"
-              class="text-center"
-            >
-              <AuthProvider />
             </VCol>
           </VRow>
         </VForm>
