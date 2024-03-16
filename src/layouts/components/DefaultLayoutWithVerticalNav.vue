@@ -83,6 +83,14 @@ const upgradeBanner = computed(() => {
           to: '/account-settings',
         }"
       />
+      <!-- form code -->
+      <VerticalNavLink
+        :item="{
+          title: 'Add Course',
+          icon: 'bx-user-plus',
+          to: '/addcourse',
+        }"
+      />
 
       <!-- 👉 Pages -->
       <VerticalNavSectionTitle
