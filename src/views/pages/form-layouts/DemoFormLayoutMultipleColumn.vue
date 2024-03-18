@@ -1,11 +1,6 @@
 <script setup>
-const firstName = ref('')
-const lastName = ref('')
-const city = ref('')
-const country = ref('')
-const company = ref('')
-const email = ref('')
-const checkbox = ref(false)
+const coursename = ref('')
+const coursetype = ref('')
 </script>
 
 <template>
@@ -17,8 +12,8 @@ const checkbox = ref(false)
         md="6"
       >
         <VTextField
-          v-model="firstName"
-          label="First Name"
+          v-model="coursename"
+          label="Course Name"
           placeholder="John"
         />
       </VCol>
@@ -29,68 +24,11 @@ const checkbox = ref(false)
         md="6"
       >
         <VTextField
-          v-model="lastName"
-          label="Last Name"
+          v-model="coursetype"
+          label="Course Type"
           placeholder="Doe"
         />
       </VCol>
-
-      <!-- 👉 Email -->
-      <VCol
-        cols="12"
-        md="6"
-      >
-        <VTextField
-          v-model="email"
-          label="Email"
-          placeholder="johndoe@email.com"
-        />
-      </VCol>
-
-      <!-- 👉 City -->
-      <VCol
-        cols="12"
-        md="6"
-      >
-        <VTextField
-          v-model="city"
-          label="City"
-          placeholder="New York"
-        />
-      </VCol>
-
-      <!-- 👉 Country -->
-      <VCol
-        cols="12"
-        md="6"
-      >
-        <VTextField
-          v-model="country"
-          label="Country"
-          placeholder="United States"
-        />
-      </VCol>
-
-      <!-- 👉 Company -->
-      <VCol
-        cols="12"
-        md="6"
-      >
-        <VTextField
-          v-model="company"
-          label="Company"
-          placeholder="Pixinvent"
-        />
-      </VCol>
-
-      <!-- 👉 Remember me -->
-      <VCol cols="12">
-        <VCheckbox
-          v-model="checkbox"
-          label="Remember me"
-        />
-      </VCol>
-
       <VCol
         cols="12"
         class="d-flex gap-4"

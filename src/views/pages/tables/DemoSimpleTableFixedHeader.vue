@@ -1,41 +1,20 @@
+
 <script setup>
-const desserts = [
-  {
-    dessert: 'Frozen Yogurt',
-    calories: 159,
-    fat: 6,
-    carbs: 24,
-    protein: 4,
-  },
-  {
-    dessert: 'Ice cream sandwich',
-    calories: 237,
-    fat: 6,
-    carbs: 24,
-    protein: 4,
-  },
-  {
-    dessert: 'Eclair',
-    calories: 262,
-    fat: 6,
-    carbs: 24,
-    protein: 4,
-  },
-  {
-    dessert: 'Cupcake',
-    calories: 305,
-    fat: 6,
-    carbs: 24,
-    protein: 4,
-  },
-  {
-    dessert: 'Gingerbread',
-    calories: 356,
-    fat: 6,
-    carbs: 24,
-    protein: 4,
-  },
-]
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+const courses = ref([])
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:3300/getcourse')
+
+    courses.value = response.data
+    console.log(response.data)
+  } catch (error) {
+    console.error('Error fetching courses:', error)
+  }
+})
 </script>
 
 <template>
@@ -46,42 +25,36 @@ const desserts = [
     <thead>
       <tr>
         <th class="text-uppercase">
-          Desserts (100g Servings)
+          ID
         </th>
         <th>
-          calories
+          Course Name
         </th>
         <th>
-          Fat(g)
+          Course Type
         </th>
         <th>
-          Carbs(g)
-        </th>
-        <th>
-          protein(g)
+          Created At
         </th>
       </tr>
     </thead>
 
     <tbody>
       <tr
-        v-for="item in desserts"
-        :key="item.dessert"
+        v-for="course in courses"
+        :key="course.course_id"
       >
         <td>
-          {{ item.dessert }}
+          {{ course.course_id }}
         </td>
         <td class="text-center">
-          {{ item.calories }}
+          {{ course.course_name }}
         </td>
         <td class="text-center">
-          {{ item.fat }}
+          {{ course.course_type }}
         </td>
         <td class="text-center">
-          {{ item.carbs }}
-        </td>
-        <td class="text-center">
-          {{ item.protein }}
+          {{ course.createdAt }}
         </td>
       </tr>
     </tbody>
