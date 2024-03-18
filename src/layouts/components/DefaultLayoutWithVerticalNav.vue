@@ -88,7 +88,7 @@ const upgradeBanner = computed(() => {
         :item="{
           title: 'Add Course',
           icon: 'bx-user-plus',
-          to: '/addcourse',
+          to: '/form-add',
         }"
       />
 
