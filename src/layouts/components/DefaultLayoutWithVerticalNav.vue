@@ -91,6 +91,13 @@ const upgradeBanner = computed(() => {
           to: '/form-add',
         }"
       />
+      <VerticalNavLink
+        :item="{
+          title: 'Add Subjects',
+          icon: 'mdi-alpha-t-box-outline',
+          to: '/subjects',
+        }"
+      />
 
       <!-- 👉 Pages -->
       <VerticalNavSectionTitle

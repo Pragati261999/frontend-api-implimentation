@@ -40,6 +40,10 @@ const router = createRouter({
           path: 'form-add',
           component: () => import('../pages/addcourse.vue'),
         },
+        {
+          path: 'subjects',
+          component: () => import('../pages/subjects.vue'),
+        },
       ],
     },
     {
