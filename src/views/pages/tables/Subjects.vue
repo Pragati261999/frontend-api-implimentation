@@ -44,6 +44,9 @@ onMounted(async () => {
         v-for="course in courses"
         :key="course.course_id"
       >
+       <td>
+          {{ course.subject_id }}
+        </td>
         <td>
           {{ course.course_id }}
         </td>
