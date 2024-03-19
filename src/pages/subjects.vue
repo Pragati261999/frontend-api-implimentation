@@ -1,9 +1,7 @@
 <script setup>
-import DemoFormLayoutHorizontalForm from '@/views/pages/form-layouts/DemoFormLayoutHorizontalForm.vue'
-import DemoFormLayoutHorizontalFormWithIcons from '@/views/pages/form-layouts/DemoFormLayoutHorizontalFormWithIcons.vue'
+i
 import DemoFormLayoutMultipleColumn from '@/views/pages/form-layouts/addsubject.vue'
 import DemoFormLayoutVerticalForm from '@/views/pages/tables/Subjects.vue'
-import DemoFormLayoutVerticalFormWithIcons from '@/views/pages/form-layouts/DemoFormLayoutVerticalFormWithIcons.vue'
 </script>
 
 <template>
