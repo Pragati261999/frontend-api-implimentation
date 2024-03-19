@@ -3,15 +3,23 @@
     <VForm @submit.prevent="submitForm">
       <VRow>
         <!-- Course Name -->
-        <VCol
-          cols="12"
-          md="6"
-        >
-          <VTextField
-            v-model="course_id"
-            label="Course Id"
-            placeholder="Enter Course Id"
-          />
+         <VCol cols="12" md="6">
+          <VSelect v-model="selectedCourseId" label="Course ID">
+            <template #prepend-item>
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title>Select Course ID</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+            <VListItem
+              v-for="course in courses"
+              :key="course.course_id"
+              :value="course.course_id"
+            >
+              {{ course.course_id }}
+            </VListItem>
+          </VSelect>
         </VCol>
 
         <!-- Course Type -->
@@ -51,8 +59,23 @@
 import axios from 'axios'
 import { ref } from 'vue'
 
-const course_id = ref('')
+
+const courses = ref([])
+
+const selectedCourseId = ref('')
 const subject_name = ref('')
+
+// const course_id = ref('')
+// const subject_name = ref('')
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:3300/getcourse')
+    courses.value = response.data
+  } catch (error) {
+    console.error('Error fetching courses:', error)
+  }
+})
 
 const submitForm = async () => {
   try {
@@ -65,8 +88,8 @@ const submitForm = async () => {
 
     // Optionally, you can reset the form fields after successful submission
     course_id.value = ''
-    subject_name.value = ''
-
+      subject_name.value = ''
+    
     // Refresh the page
     window.location.reload()
   } catch (error) {
