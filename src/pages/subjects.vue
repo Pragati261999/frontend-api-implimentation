@@ -1,5 +1,4 @@
 <script setup>
-i
 import DemoFormLayoutMultipleColumn from '@/views/pages/form-layouts/addsubject.vue'
 import DemoFormLayoutVerticalForm from '@/views/pages/tables/Subjects.vue'
 </script>
