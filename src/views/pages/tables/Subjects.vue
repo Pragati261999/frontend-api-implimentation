@@ -28,7 +28,7 @@ onMounted(async () => {
           ID
         </th>
         <th>
-          Course ID
+          Course Name
         </th>
         <th>
           Subject Name
@@ -48,7 +48,7 @@ onMounted(async () => {
           {{ course.subject_id }}
         </td>
         <td>
-          {{ course.course_id }}
+          {{ course.course.course_name }}
         </td>
         <td class="text-center">
           {{ course.subject_name }}
