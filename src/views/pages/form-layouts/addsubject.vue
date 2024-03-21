@@ -3,34 +3,36 @@
     <VForm @submit.prevent="submitForm">
       <VRow>
         <!-- Course Name -->
-         <VCol cols="12" md="6">
-          <VSelect v-model="selectedCourseId" label="Course ID">
-            <template #prepend-item>
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title>Select Course ID</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </template>
-            <VListItem
-              v-for="course in courses"
-              :key="course.course_id"
-              :value="course.course_id"
-            >
-              {{ course.course_id }}
-            </VListItem>
-          </VSelect>
+        <VCol
+          cols="12"
+          md="4"
+        >
+          <VTextField
+            v-model="course_id"
+            label="Course Id"
+            placeholder="Enter Course Id"
+          />
         </VCol>
 
         <!-- Course Type -->
         <VCol
           cols="12"
-          md="6"
+          md="4"
         >
           <VTextField
             v-model="subject_name"
             label="Subject Name"
             placeholder="Enter Subject Name"
+          />
+        </VCol>
+        <VCol
+          cols="12"
+          md="4"
+        >
+          <VTextField
+            v-model="subject_code"
+            label="Subject Code"
+            placeholder="Enter Subject Code"
           />
         </VCol>
 
@@ -58,12 +60,16 @@
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
+import 'vuetify/dist/vuetify.min.css'
+
 
 
 const courses = ref([])
 
 const selectedCourseId = ref('')
+const course_id = ref('')
 const subject_name = ref('')
+const subject_code = ref('')
 
 // const course_id = ref('')
 // const subject_name = ref('')
@@ -71,7 +77,9 @@ const subject_name = ref('')
 onMounted(async () => {
   try {
     const response = await axios.get('http://localhost:3300/getcourse')
+
     courses.value = response.data
+    console.log(response.data)
   } catch (error) {
     console.error('Error fetching courses:', error)
   }
@@ -82,13 +90,15 @@ const submitForm = async () => {
     const response = await axios.post('http://localhost:3300/addsubject', {
       course_id: course_id.value,
       subject_name: subject_name.value,
+      subject_code: subject_code.value,
     })
 
     console.log('Course added:', response.data)
 
     // Optionally, you can reset the form fields after successful submission
-    course_id.value = ''
-      subject_name.value = ''
+    selectedCourseId.value = '' // Reset the selected course ID
+    subject_name.value = '' // Reset the subject name
+    subject_code.value = '' // Reset the subject code
     
     // Refresh the page
     window.location.reload()
