@@ -11,7 +11,7 @@ import DemoFormLayoutVerticalFormWithIcons from '@/views/pages/form-layouts/Demo
     <VRow>
       <VCol cols="12">
         <!-- 👉 Multiple Column -->
-        <VCard title="Multiple Column">
+        <VCard title="ADD Questions">
           <VCardText>
             <DemoFormLayoutHorizontalFormWithIcons />
           </VCardText>

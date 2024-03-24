@@ -8,7 +8,7 @@ import DemoFormLayoutVerticalForm from '@/views/pages/tables/Subjects.vue'
     <VRow>
       <VCol cols="12">
         <!-- 👉 Multiple Column -->
-        <VCard title="Multiple Column">
+        <VCard title="Subjects">
           <VCardText>
             <DemoFormLayoutMultipleColumn />
           </VCardText>

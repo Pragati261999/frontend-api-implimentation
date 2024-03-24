@@ -9,14 +9,13 @@ const checkbox = ref(false)
 <template>
   <VForm @submit.prevent="() => {}">
     <VRow>
-      <!-- 👉 First Name -->
       <VCol cols="12">
         <VRow no-gutters>
           <VCol
             cols="12"
             md="3"
           >
-            <label for="firstNameHorizontalIcons">First Name</label>
+            <label for="firstNameHorizontalIcons">Course Id</label>
           </VCol>
 
           <VCol
@@ -34,14 +33,13 @@ const checkbox = ref(false)
         </VRow>
       </VCol>
 
-      <!-- 👉 Email -->
       <VCol cols="12">
         <VRow no-gutters>
           <VCol
             cols="12"
             md="3"
           >
-            <label for="emailHorizontalIcons">Email</label>
+            <label for="emailHorizontalIcons">Subject Id</label>
           </VCol>
 
           <VCol
@@ -66,7 +64,55 @@ const checkbox = ref(false)
             cols="12"
             md="3"
           >
-            <label for="mobileHorizontalIcons">Mobile</label>
+            <label for="mobileHorizontalIcons">Question Type</label>
+          </VCol>
+
+          <VCol
+            cols="12"
+            md="9"
+          >
+            <VTextField
+              id="mobileHorizontalIcons"
+              v-model="mobile"
+              type="number"
+              prepend-inner-icon="bx-mobile"
+              placeholder="+1 123 456 7890"
+              persistent-placeholder
+            />
+          </VCol>
+        </VRow>
+      </VCol>
+      <VCol cols="12">
+        <VRow no-gutters>
+          <VCol
+            cols="12"
+            md="3"
+          >
+            <label for="mobileHorizontalIcons">Question Type</label>
+          </VCol>
+
+          <VCol
+            cols="12"
+            md="9"
+          >
+            <VTextField
+              id="mobileHorizontalIcons"
+              v-model="mobile"
+              type="number"
+              prepend-inner-icon="bx-mobile"
+              placeholder="+1 123 456 7890"
+              persistent-placeholder
+            />
+          </VCol>
+        </VRow>
+      </VCol>
+      <VCol cols="12">
+        <VRow no-gutters>
+          <VCol
+            cols="12"
+            md="3"
+          >
+            <label for="mobileHorizontalIcons">Question</label>
           </VCol>
 
           <VCol
@@ -92,7 +138,7 @@ const checkbox = ref(false)
             cols="12"
             md="3"
           >
-            <label for="passwordHorizontalIcons">Password</label>
+            <label for="passwordHorizontalIcons">Faculty</label>
           </VCol>
 
           <VCol
@@ -110,17 +156,53 @@ const checkbox = ref(false)
           </VCol>
         </VRow>
       </VCol>
+      <VCol cols="12">
+        <VRow no-gutters>
+          <VCol
+            cols="12"
+            md="3"
+          >
+            <label for="mobileHorizontalIcons">Question Level</label>
+          </VCol>
 
-      <!-- 👉 Checkbox -->
-      <VCol
-        offset-md="3"
-        cols="12"
-        md="9"
-      >
-        <VCheckbox
-          v-model="checkbox"
-          label="Remember me"
-        />
+          <VCol
+            cols="12"
+            md="9"
+          >
+            <VTextField
+              id="mobileHorizontalIcons"
+              v-model="mobile"
+              type="number"
+              prepend-inner-icon="bx-mobile"
+              placeholder="+1 123 456 7890"
+              persistent-placeholder
+            />
+          </VCol>
+        </VRow>
+      </VCol>
+      <VCol cols="12">
+        <VRow no-gutters>
+          <VCol
+            cols="12"
+            md="3"
+          >
+            <label for="mobileHorizontalIcons">Marks</label>
+          </VCol>
+
+          <VCol
+            cols="12"
+            md="9"
+          >
+            <VTextField
+              id="mobileHorizontalIcons"
+              v-model="mobile"
+              type="number"
+              prepend-inner-icon="bx-mobile"
+              placeholder="+1 123 456 7890"
+              persistent-placeholder
+            />
+          </VCol>
+        </VRow>
       </VCol>
 
       <!-- 👉 submit and reset button -->
