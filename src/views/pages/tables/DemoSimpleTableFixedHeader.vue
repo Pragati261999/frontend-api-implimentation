@@ -38,13 +38,12 @@ onMounted(async () => {
         </th>
       </tr>
     </thead>
-
     <tbody>
       <tr
         v-for="course in courses"
         :key="course.course_id"
       >
-        <td>
+        <td class="text-center">
           {{ course.course_id }}
         </td>
         <td class="text-center">

@@ -44,6 +44,10 @@ const router = createRouter({
           path: 'subjects',
           component: () => import('../pages/subjects.vue'),
         },
+        {
+          path: 'questions',
+          component: () => import('../pages/questions.vue'),
+        },
       ],
     },
     {

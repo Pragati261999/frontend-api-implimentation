@@ -98,6 +98,13 @@ const upgradeBanner = computed(() => {
           to: '/subjects',
         }"
       />
+      <VerticalNavLink
+        :item="{
+          title: 'Add Questions',
+          icon: 'bx-info-circle',
+          to: '/questions',
+        }"
+      />
 
       <!-- 👉 Pages -->
       <VerticalNavSectionTitle
