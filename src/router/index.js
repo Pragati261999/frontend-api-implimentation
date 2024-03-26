@@ -46,7 +46,7 @@ const router = createRouter({
         },
         {
           path: 'questions',
-          component: () => import('../pages/questions.vue'),
+          component: () => import('../pages/questions.vue '),
         },
       ],
     },

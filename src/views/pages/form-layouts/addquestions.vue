@@ -1,9 +1,42 @@
 <script setup>
-const firstName = ref('')
-const email = ref('')
-const mobile = ref()
-const password = ref()
-const checkbox = ref(false)
+import axios from 'axios'
+import { ref } from 'vue'
+import 'vuetify/dist/vuetify.min.css'
+
+const course_id = ref('')
+const subject_id = ref('')
+const question_type = ref()
+const question = ref()
+const faculty_id = ref()
+const question_level = ref()
+const marks = ref()
+
+
+const submitForm = async () => {
+  try {
+    const response = await axios.post('http://localhost:3300/addquestions', {
+      course_id: course_id.value,
+      subject_id: subject_id.value,
+      question_type: question_type.value,
+      question: question.value,
+      faculty_id: faculty_id.value,
+      question_level: question_level.value,
+      marks: marks.value,
+    })
+
+    console.log('Course added:', response.data)
+
+    // Optionally, you can reset the form fields after successful submission
+    selectedCourseId.value = '' // Reset the selected course ID
+    subject_name.value = '' // Reset the subject name
+    subject_code.value = '' // Reset the subject code
+    
+    // Refresh the page
+    window.location.reload()
+  } catch (error) {
+    console.error('Error adding course:', error)
+  }
+}
 </script>
 
 <template>
@@ -19,6 +52,8 @@ const checkbox = ref(false)
           </VCol>
 
           <VCol
+
+
             cols="12"
             md="9"
           >
@@ -56,8 +91,6 @@ const checkbox = ref(false)
           </VCol>
         </VRow>
       </VCol>
-
-      <!-- 👉 Mobile -->
       <VCol cols="12">
         <VRow no-gutters>
           <VCol
