@@ -1,5 +1,5 @@
 <script setup>
-import axios from 'axios'
+import axios from '@axios'
 import { ref } from 'vue'
 import 'vuetify/dist/vuetify.min.css'
 
@@ -24,13 +24,15 @@ const submitForm = async () => {
       marks: marks.value,
     })
 
-    console.log('Course added:', response.data)
+    console.log('Question successfully added:', response.data)
+    course_id.value="",
+    subject_id.value = "",
+    question_type.value ="",
+    question.value = "",
+    faculty_id.value="",
+    question_level.value="",
+    marks.value="",
 
-    // Optionally, you can reset the form fields after successful submission
-    selectedCourseId.value = '' // Reset the selected course ID
-    subject_name.value = '' // Reset the subject name
-    subject_code.value = '' // Reset the subject code
-    
     // Refresh the page
     window.location.reload()
   } catch (error) {
