@@ -2,14 +2,32 @@
 import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 import logo from '@images/logo.svg?raw'
 
+import axios from 'axios'
+import { ref } from 'vue'
+import 'vuetify/dist/vuetify.min.css'
+
+
 const form = ref({
   username: '',
   email: '',
   password: '',
-  privacyPolicies: false,
+  role: '',
 })
 
 const isPasswordVisible = ref(false)
+
+const submitForm = async () => {
+  try {
+    const response = await axios.post('http://localhost:3300/signup', form.value)
+
+    console.log(response.data) // Handle response according to your application needs
+    // Optionally, you can redirect the user to another page after successful signup
+  } catch (error) {
+    console.error('Error signing up:', error.response.data)
+
+    // Handle error responses or display error messages to the user
+  }
+}
 </script>
 
 <template>
@@ -43,7 +61,7 @@ const isPasswordVisible = ref(false)
       </VCardText>
 
       <VCardText>
-        <VForm @submit.prevent="$router.push('/')">
+        <VForm @submit.prevent="submitForm">
           <VRow>
             <!-- Username -->
             <VCol cols="12">
@@ -74,23 +92,14 @@ const isPasswordVisible = ref(false)
                 :append-inner-icon="isPasswordVisible ? 'bx-hide' : 'bx-show'"
                 @click:append-inner="isPasswordVisible = !isPasswordVisible"
               />
-              <div class="d-flex align-center mt-1 mb-4">
-                <VCheckbox
-                  id="privacy-policy"
-                  v-model="form.privacyPolicies"
-                  inline
+              <VCol cols="12">
+                <VTextField
+                  v-model="form.role"
+                  autofocus
+                  label="Role"
+                  placeholder="Role"
                 />
-                <VLabel
-                  for="privacy-policy"
-                  style="opacity: 1;"
-                >
-                  <span class="me-1">I agree to</span>
-                  <a
-                    href="javascript:void(0)"
-                    class="text-primary"
-                  >privacy policy & terms</a>
-                </VLabel>
-              </div>
+              </VCol>
 
               <VBtn
                 block
