@@ -42,7 +42,7 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <VForm @submit.prevent="() => {}">
+  <VForm @submit.prevent="submitForm">
     <VRow>
       <VCol cols="12">
         <VRow no-gutters>
@@ -61,7 +61,7 @@ const submitForm = async () => {
           >
             <VTextField
               id="firstNameHorizontalIcons"
-              v-model="firstName"
+              v-model="course_id"
               prepend-inner-icon="bx-user"
               placeholder="John"
               persistent-placeholder
@@ -85,7 +85,7 @@ const submitForm = async () => {
           >
             <VTextField
               id="emailHorizontalIcons"
-              v-model="email"
+              v-model="subject_id"
               prepend-inner-icon="bx-envelope"
               placeholder="johndoe@email.com"
               persistent-placeholder
@@ -108,39 +108,15 @@ const submitForm = async () => {
           >
             <VTextField
               id="mobileHorizontalIcons"
-              v-model="mobile"
-              type="number"
-              prepend-inner-icon="bx-mobile"
-              placeholder="+1 123 456 7890"
+              v-model="question_type"
+              prepend-inner-icon="bx-user"
+              placeholder="John"
               persistent-placeholder
             />
           </VCol>
         </VRow>
       </VCol>
-      <VCol cols="12">
-        <VRow no-gutters>
-          <VCol
-            cols="12"
-            md="3"
-          >
-            <label for="mobileHorizontalIcons">Question Type</label>
-          </VCol>
-
-          <VCol
-            cols="12"
-            md="9"
-          >
-            <VTextField
-              id="mobileHorizontalIcons"
-              v-model="mobile"
-              type="number"
-              prepend-inner-icon="bx-mobile"
-              placeholder="+1 123 456 7890"
-              persistent-placeholder
-            />
-          </VCol>
-        </VRow>
-      </VCol>
+   
       <VCol cols="12">
         <VRow no-gutters>
           <VCol
@@ -156,8 +132,8 @@ const submitForm = async () => {
           >
             <VTextField
               id="mobileHorizontalIcons"
-              v-model="mobile"
-              type="number"
+              v-model="question"
+              type="text"
               prepend-inner-icon="bx-mobile"
               placeholder="+1 123 456 7890"
               persistent-placeholder
@@ -182,10 +158,9 @@ const submitForm = async () => {
           >
             <VTextField
               id="passwordHorizontalIcons"
-              v-model="password"
-              prepend-inner-icon="bx-lock"
-              type="password"
-              placeholder="············"
+              v-model="faculty_id"
+              prepend-inner-icon="bx-user"
+              placeholder="John"
               persistent-placeholder
             />
           </VCol>
@@ -206,10 +181,9 @@ const submitForm = async () => {
           >
             <VTextField
               id="mobileHorizontalIcons"
-              v-model="mobile"
-              type="number"
-              prepend-inner-icon="bx-mobile"
-              placeholder="+1 123 456 7890"
+              v-model="question_level"
+              prepend-inner-icon="bx-user"
+              placeholder="John"
               persistent-placeholder
             />
           </VCol>
@@ -230,7 +204,7 @@ const submitForm = async () => {
           >
             <VTextField
               id="mobileHorizontalIcons"
-              v-model="mobile"
+              v-model="marks"
               type="number"
               prepend-inner-icon="bx-mobile"
               placeholder="+1 123 456 7890"
