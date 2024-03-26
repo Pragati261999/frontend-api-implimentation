@@ -20,8 +20,11 @@ const submitForm = async () => {
   try {
     const response = await axios.post('http://localhost:3300/signup', form.value)
 
-    console.log(response.data) // Handle response according to your application needs
-    // Optionally, you can redirect the user to another page after successful signup
+    console.log(response.data)
+    username.value = ""
+    email.value = ""
+    password.value = ""
+    role.value = ""
   } catch (error) {
     console.error('Error signing up:', error.response.data)
 
