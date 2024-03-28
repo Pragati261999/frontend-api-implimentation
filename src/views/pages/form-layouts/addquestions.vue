@@ -10,7 +10,19 @@ const question = ref()
 const faculty_id = ref()
 const question_level = ref()
 const marks = ref()
+const subjects = ref([])
 
+
+
+const fetchSubjects = async () => {
+  try {
+    const response = await axios.get(`http://localhost:3300/subjects?course_id=${course_id.value}`)
+
+    subjects.value = response.data
+  } catch (error) {
+    console.error('Error fetching subjects:', error)
+  }
+}
 
 const submitForm = async () => {
   try {
@@ -76,18 +88,20 @@ const submitForm = async () => {
             cols="12"
             md="3"
           >
-            <label for="emailHorizontalIcons">Subject Id</label>
+            <label for="subjectId">Subject</label>
           </VCol>
-
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
-              id="emailHorizontalIcons"
+            <VSelect
+              id="subjectId"
               v-model="subject_id"
+              :items="subjects"
+              item-text="subjectName"
+              item-value="subjectId"
               prepend-inner-icon="bx-envelope"
-              placeholder="johndoe@email.com"
+              placeholder="Select Subject"
               persistent-placeholder
             />
           </VCol>

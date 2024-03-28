@@ -10,6 +10,7 @@ onMounted(async () => {
     const response = await axios.get('http://localhost:3300/getquestions')
 
     courses.value = response.data
+
     console.log(response.data)
   } catch (error) {
     console.error('Error fetching courses:', error)
