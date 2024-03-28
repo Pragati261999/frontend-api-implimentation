@@ -16,9 +16,10 @@ const subjects = ref([])
 
 const fetchSubjects = async () => {
   try {
-    const response = await axios.get(`http://localhost:3300/subjects?course_id=${course_id.value}`)
+    const response = await axios.get(`http://localhost:3300/getsubject`)
 
     subjects.value = response.data
+    console.log(subjects.value)
   } catch (error) {
     console.error('Error fetching subjects:', error)
   }
