@@ -105,6 +105,13 @@ const upgradeBanner = computed(() => {
           to: '/questions',
         }"
       />
+      <VerticalNavLink
+        :item="{
+          title: 'Show Questions',
+          icon: 'mdi-alpha-t-box-outline',
+          to: '/showquestions',
+        }"
+      />
 
       <!-- 👉 Pages -->
       <VerticalNavSectionTitle

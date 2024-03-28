@@ -6,16 +6,9 @@ import DemoFormLayoutVerticalForm from '@/views/pages/tables/questions.vue'
 <template>
   <div>
     <VRow>
+      
       <VCol cols="12">
-        <!-- 👉 Multiple Column -->
-        <VCard title="ADD Questions">
-          <VCardText>
-            <DemoFormLayoutHorizontalFormWithIcons />
-          </VCardText>
-        </VCard>
-      </VCol>
-      <VCol cols="12">
-        <VCard>
+        <VCard title="Show All Questions">
           <DemoFormLayoutVerticalForm />
         </VCard>
       </VCol>
