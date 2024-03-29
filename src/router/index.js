@@ -52,6 +52,10 @@ const router = createRouter({
           path: 'showquestions',
           component: () => import('../pages/showquestions.vue'),
         },
+        {
+          path: 'exampage',
+          component: () => import('../pages/exampage.vue'),
+        },
       ],
     },
     {
