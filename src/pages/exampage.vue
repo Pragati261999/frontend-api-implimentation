@@ -71,6 +71,19 @@ const goToQuestion = (questionId) => {
   }
 }
 
+const goToNextQuestion = () => {
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++
+    currentQuestion.value = questions.value[currentQuestionIndex]
+  }
+}
+
+const goToPreviousQuestion = () => {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--
+    currentQuestion.value = questions.value[currentQuestionIndex]
+  }
+}
 </script>
 
 <style scoped>
