@@ -75,7 +75,7 @@ const submitForm = async () => {
             <VTextField
               id="firstNameHorizontalIcons"
               v-model="course_id"
-              placeholder="John"
+              placeholder="Course Id"
               persistent-placeholder
             />
           </VCol>
@@ -123,7 +123,7 @@ const submitForm = async () => {
             <VTextField
               id="mobileHorizontalIcons"
               v-model="question_type"
-              placeholder="John"
+              placeholder="Question Type"
               persistent-placeholder
             />
           </VCol>
@@ -147,7 +147,7 @@ const submitForm = async () => {
               id="mobileHorizontalIcons"
               v-model="question"
               type="text"
-              placeholder="+1 123 456 7890"
+              placeholder="Type Your Question Here"
               persistent-placeholder
             />
           </VCol>
@@ -171,7 +171,7 @@ const submitForm = async () => {
             <VTextField
               id="passwordHorizontalIcons"
               v-model="faculty_id"
-              placeholder="John"
+              placeholder="Faculy"
               persistent-placeholder
             />
           </VCol>
@@ -193,7 +193,7 @@ const submitForm = async () => {
             <VTextField
               id="mobileHorizontalIcons"
               v-model="question_level"
-              placeholder="John"
+              placeholder="Question level"
               persistent-placeholder
             />
           </VCol>
@@ -216,7 +216,7 @@ const submitForm = async () => {
               id="mobileHorizontalIcons"
               v-model="marks"
               type="number"
-              placeholder="+1 123 456 7890"
+              placeholder="Marks"
               persistent-placeholder
             />
           </VCol>
