@@ -1,5 +1,5 @@
 <script setup>
-import axios from 'axios'
+import axios from '@axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -15,6 +15,18 @@ const errorMessage = ref('')
 
 const router = useRouter()
 
+const checkLoggedIn = async () => {
+  // Check user is logged in
+  const self = this
+
+  const t = await localStorage.getItem("access-token")
+  if (t !== "" && t != null) {
+    self.$router.push({ path: "/dashboard" })
+  } else {
+    console.log("not logged in")
+  }
+}
+
 const loginUser = async () => {
   try {
     isLoading.value = true
@@ -25,10 +37,20 @@ const loginUser = async () => {
       password: form.value.password,
     })
 
+    
+
     // Check if the login was successful
     if (response.status === 200) {
-      // Redirect to the desired page after successful login
-      router.push('/dashboard')
+      localStorage.setItem(
+        "access-token",
+        response.data.data.payload.access_token,
+      )
+      setTimeout(() => {
+        self.processing = false
+        self.checkLoggedIn()
+      }, 1000)
+
+      
     } else {
       // Handle other status codes or display a generic error message
       errorMessage.value = 'Login failed. Please check your credentials.'
@@ -113,17 +135,20 @@ const loginUser = async () => {
               </div>
 
               <!-- login button -->
-               <VBtn
-      block
-      type="submit"
-      :loading="isLoading"
-    >
-      {{ isLoading ? 'Logging in...' : 'Login' }}
-    </VBtn>
-     <!-- Show error message -->
-    <div v-if="errorMessage" class="text-h6 mt-2 text-danger">
-      {{ errorMessage }}
-    </div>
+              <VBtn
+                block
+                type="submit"
+                :loading="isLoading"
+              >
+                {{ isLoading ? 'Logging in...' : 'Login' }}
+              </VBtn>
+              <!-- Show error message -->
+              <div
+                v-if="errorMessage"
+                class="text-h6 mt-2 text-danger"
+              >
+                {{ errorMessage }}
+              </div>
             </VCol>
           </VRow>
         </VForm>
